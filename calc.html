@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        function notNum(sumb) {
+            const screen = document.getElementById('screen')
+            const firstnumb = screen.value
+document.write(firstnumb + sumb )
+        }
+
+
+        function click(event) {
+            const button = event.target
+            const screen = document.getElementById('screen')
+            if (button.innerText >= 0 && button.innerText < 10) {
+                screen.value += button.innerText
+            }
+            else
+                notNum(button.innerText)
+        }
+
+        window.onload = function () {
+            document.getElementById('keyBoard').onclick = click
+        }
+    </script>
+</head>
+
+<body>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <td colspan="4">
+                    <input type="text" name="" id="screen"></td>
+                </td>
+            </tr>
+        </thead>
+        <tbody id="keyBoard">
+            <tr>
+                <td><button>7</button></td>
+                <td><button>8</button></td>
+                <td><button>9</button></td>
+                <td><button>/</button></td>
+            </tr>
+            <tr>
+                <td><button>4</button></td>
+                <td><button>5</button></td>
+                <td><button>6</button></td>
+                <td><button>*</button></td>
+            </tr>
+            <tr>
+                <td><button>1</button></td>
+                <td><button>2</button></td>
+                <td><button>3</button></td>
+                <td><button>-</button></td>
+            </tr>
+            <tr>
+                <td><button>0</button></td>
+                <td><button>=</button></td>
+                <td><button>c</button></td>
+
+                <td><button>+</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+
+</html>
