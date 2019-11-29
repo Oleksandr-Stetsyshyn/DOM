@@ -8,45 +8,77 @@
     <title>Document</title>
     <script>
 
-        function aryfmetOperation(num1, sumb, num2) {
-            document.write(num1, sumb, num2)
-
+        function aryfmetOperation(num1, operation, num2) {
+            const screen = document.getElementById('screen')
+            switch (operation) {
+                case '/':
+                    screen.value = num1 / num2
+                    break;
+                case '*':
+                    screen.value = num1 * num2
+                    break;
+                case '-':
+                    screen.value = num1 - num2
+                    break;
+                case '+':
+                    screen.value = num1 + num2
+                    break;
+                default:
+                    break;
+            }
         }
-
+        var num1
+        var num2
+        var operation
 
         function click(event) {
             const button = event.target
             const screen = document.getElementById('screen')
-            let num1
-            let num2
-            let sumb
-            
-            do {
-                screen.value += button.innerText
-            } while (button.innerText >= 0 && button.innerText < 10);
-
-            num1 = parseInt(screen.value)
-            sumb = button.innerText
-            screen.value = ''
-
-            do {
-                screen.value += button.innerText
-            } while (button.innerText >= 0 && button.innerText < 10);
-            num2 = parseInt(screen.value)
-
-            if (button.innerText == '=') {
-                aryfmetOperation(num1, sumb, num2)
+            switch (true) {
+                case button.innerText >= 0 && button.innerText <= 9:
+                    screen.value += button.innerText
+                    break;
+                case button.innerText == '/':
+                    num1 = parseInt(screen.value)
+                    operation = '/'
+                    screen.value = ''
+                    break;
+                case button.innerText == '*':
+                    operation = '*'
+                    num1 = parseInt(screen.value)
+                    screen.value = ''
+                    break;
+                case button.innerText == '+':
+                    operation = '+'
+                    num1 = parseInt(screen.value)
+                    screen.value = ''
+                    break;
+                case button.innerText == '-':
+                    operation = '-'
+                    num1 = parseInt(screen.value)
+                    screen.value = ''
+                    break;
+                case button.innerText == 'c':
+                    screen.value = ''
+                    break;
+                case button.innerText == '=':
+                    num2 = parseInt(screen.value)
+                    screen.value = ''
+                    aryfmetOperation(num1, operation, num2)
+                    break;
+                default:
+                    break
             }
         }
 
         window.onload = function () {
             document.getElementById('keyBoard').onclick = click
         }
+
     </script>
 </head>
 
 <body>
-
     <table border="1">
         <thead>
             <tr>
@@ -78,11 +110,9 @@
                 <td><button>0</button></td>
                 <td><button>=</button></td>
                 <td><button>c</button></td>
-
                 <td><button>+</button></td>
             </tr>
         </tbody>
-
     </table>
 </body>
 
