@@ -8,21 +8,30 @@
     <title>Document</title>
     <script>
 
-        function notNum(sumb) {
-            const screen = document.getElementById('screen')
-            const firstnumb = screen.value
-document.write(firstnumb + sumb )
+        function aryfmetOperation(num1, sumb, num2) {
+            document.write(num1, sumb, num2)
+
         }
 
 
         function click(event) {
             const button = event.target
             const screen = document.getElementById('screen')
+            let num1 = 0
+            let num2 = 0
+            let sumb
             if (button.innerText >= 0 && button.innerText < 10) {
                 screen.value += button.innerText
             }
             else
-                notNum(button.innerText)
+                if (button.innerText == '=') {
+                    num2 = parseInt(screen.value)
+                    aryfmetOperation(num1, button, num2)
+                }
+                else {
+                    screen = document.getElementById('screen')
+                    num1 = parseInt(screen.value)
+                }
         }
 
         window.onload = function () {
