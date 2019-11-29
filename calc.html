@@ -17,21 +17,26 @@
         function click(event) {
             const button = event.target
             const screen = document.getElementById('screen')
-            let num1 = 0
-            let num2 = 0
+            let num1
+            let num2
             let sumb
-            if (button.innerText >= 0 && button.innerText < 10) {
+            
+            do {
                 screen.value += button.innerText
+            } while (button.innerText >= 0 && button.innerText < 10);
+
+            num1 = parseInt(screen.value)
+            sumb = button.innerText
+            screen.value = ''
+
+            do {
+                screen.value += button.innerText
+            } while (button.innerText >= 0 && button.innerText < 10);
+            num2 = parseInt(screen.value)
+
+            if (button.innerText == '=') {
+                aryfmetOperation(num1, sumb, num2)
             }
-            else
-                if (button.innerText == '=') {
-                    num2 = parseInt(screen.value)
-                    aryfmetOperation(num1, button, num2)
-                }
-                else {
-                    screen = document.getElementById('screen')
-                    num1 = parseInt(screen.value)
-                }
         }
 
         window.onload = function () {
